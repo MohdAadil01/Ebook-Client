@@ -9,6 +9,11 @@ function Navbar() {
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
 
+  const handleLogout = () => {
+    dispatch(logout());
+    localStorage.removeItem("accessToken");
+  };
+
   return (
     <div className="border-b">
       <nav className="max-w-7xl mx-auto flex items-center justify-between py-4">
@@ -42,7 +47,7 @@ function Navbar() {
             </div>
           )}
           {user ? (
-            <button onClick={() => dispatch(logout())}>
+            <button onClick={handleLogout}>
               <IoMdLogOut size={40} className="text-primary-700" />
             </button>
           ) : (
