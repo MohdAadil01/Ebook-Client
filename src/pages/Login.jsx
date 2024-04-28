@@ -1,6 +1,31 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { login } from "../redux/slices/userSlice";
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const res = await fetch("http://localhost:4000/api/users/login", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+    const data = await res.json();
+    dispatch(login(data._id));
+
+    navigate("/");
+
+    console.log(data);
+  };
   return (
     <div className="max-w-sm mx-auto mt-20">
       <h2 className="text-2xl font-bold text-primary-700 mb-4">Login</h2>
@@ -14,6 +39,10 @@ const LoginPage = () => {
           </label>
           <input
             type="email"
+            value={formData.email}
+            onChange={(e) =>
+              setFormData({ ...formData, email: e.target.value })
+            }
             name="email"
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-primary-500"
           />
@@ -27,12 +56,17 @@ const LoginPage = () => {
           </label>
           <input
             type="password"
+            value={formData.password}
+            onChange={(e) =>
+              setFormData({ ...formData, password: e.target.value })
+            }
             name="password"
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-primary-500"
           />
         </div>
         <button
           type="submit"
+          onClick={handleLogin}
           className="w-full bg-primary-500 text-white rounded-md py-2 px-4 font-medium hover:bg-primary-600 transition-colors"
         >
           Login

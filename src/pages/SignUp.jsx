@@ -1,6 +1,34 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { signup } from "../redux/slices/userSlice";
 
 const SignupPage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [formData, setFromData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  console.log(formData);
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    const res = await fetch("http://localhost:4000/api/users/register", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+    const data = await res.json();
+    dispatch(signup(data._id));
+    navigate("/");
+    console.log(data);
+  };
+
   return (
     <div className="max-w-sm mx-auto mt-20">
       <h2 className="text-2xl font-bold text-primary-700 mb-4">Sign Up</h2>
@@ -14,6 +42,8 @@ const SignupPage = () => {
           </label>
           <input
             type="text"
+            value={formData.name}
+            onChange={(e) => setFromData({ ...formData, name: e.target.value })}
             name="name"
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-primary-500"
           />
@@ -28,6 +58,10 @@ const SignupPage = () => {
           <input
             type="email"
             name="email"
+            value={formData.email}
+            onChange={(e) =>
+              setFromData({ ...formData, email: e.target.value })
+            }
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-primary-500"
           />
         </div>
@@ -41,11 +75,16 @@ const SignupPage = () => {
           <input
             type="password"
             name="password"
+            value={formData.password}
+            onChange={(e) =>
+              setFromData({ ...formData, password: e.target.value })
+            }
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-primary-500"
           />
         </div>
         <button
           type="submit"
+          onClick={handleSignup}
           className="w-full bg-primary-500 text-white rounded-md py-2 px-4 font-medium hover:bg-primary-600 transition-colors"
         >
           Sign Up
