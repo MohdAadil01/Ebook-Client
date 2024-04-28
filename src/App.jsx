@@ -5,6 +5,7 @@ import ErrorPage from "./pages/ErrorPage";
 import AppLayout from "./pages/AppLayout";
 import HomePage from "./pages/HomePage";
 import SingleBook from "./pages/SingleBook";
+import CreateBook from "./pages/CreateBook";
 
 const router = createBrowserRouter([
   {
@@ -14,7 +15,8 @@ const router = createBrowserRouter([
       { path: "/", element: <HomePage /> },
       { path: "/login", element: <LoginPage /> },
       { path: "/signup", element: <SignupPage /> },
-      { path: "/book/:bookId", element: <SingleBook /> },
+      { path: "/books/:bookId", element: <SingleBook /> },
+      { path: "/books/create", element: <CreateBook /> },
     ],
     errorElement: <ErrorPage />,
   },
