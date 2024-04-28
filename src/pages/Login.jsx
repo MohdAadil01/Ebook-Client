@@ -20,6 +20,7 @@ const LoginPage = () => {
       body: JSON.stringify(formData),
     });
     const data = await res.json();
+    localStorage.setItem("accessToken", data.accessToken);
     dispatch(login(data._id));
 
     navigate("/");

@@ -24,6 +24,7 @@ const SignupPage = () => {
       body: JSON.stringify(formData),
     });
     const data = await res.json();
+    localStorage.setItem("accessToken", data.accessToken);
     dispatch(signup(data._id));
     navigate("/");
     console.log(data);
