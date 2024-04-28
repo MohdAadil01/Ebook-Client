@@ -31,6 +31,16 @@ function Navbar() {
               <LuSearch className="text-primary-700 font-bold" size={20} />
             </button>
           </div>
+          {user && (
+            <div>
+              <Link
+                to={"/books/create"}
+                className="h-10 rounded-lg px-4 py-2 text-sm font-medium text-primary-500 transition-all hover:border-primary-100 hover:bg-primary-100 active:border-primary-200 active:bg-primary-200"
+              >
+                Share Your Book
+              </Link>
+            </div>
+          )}
           {user ? (
             <button onClick={() => dispatch(logout())}>
               <IoMdLogOut size={40} className="text-primary-700" />
