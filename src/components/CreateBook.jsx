@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function CreateBook() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: "",
     genre: "",
@@ -31,6 +33,7 @@ function CreateBook() {
     });
 
     const data = await res.json();
+    console.log(data);
     if (!res.ok) {
       setMessage(data.message);
       setLoading(false);
@@ -38,6 +41,7 @@ function CreateBook() {
     }
     setMessage(data.message);
     setLoading(false);
+    navigate("/");
   };
   return (
     <div className="max-w-md mx-auto mt-8 p-6 bg-white shadow-lg rounded-md">
@@ -53,6 +57,7 @@ function CreateBook() {
             Title
           </label>
           <input
+            required
             type="text"
             id="title"
             name="title"
@@ -61,7 +66,6 @@ function CreateBook() {
               setFormData({ ...formData, title: e.target.value })
             }
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-primary-500"
-            required
           />
         </div>
         <div className="mb-4">
@@ -72,6 +76,7 @@ function CreateBook() {
             Genre
           </label>
           <input
+            required
             type="text"
             id="genre"
             value={formData.genre}
@@ -80,7 +85,6 @@ function CreateBook() {
             }
             name="genre"
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-primary-500"
-            required
           />
         </div>
         <div className="mb-4">
@@ -91,6 +95,7 @@ function CreateBook() {
             Cover Image
           </label>
           <input
+            required
             type="file"
             id="coverImage"
             onChange={(e) =>
@@ -98,7 +103,6 @@ function CreateBook() {
             }
             name="coverImage"
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-primary-500"
-            required
           />
         </div>
         <div className="mb-4">
@@ -111,12 +115,12 @@ function CreateBook() {
           <input
             type="file"
             id="file"
+            required
             onChange={(e) =>
               setFormData({ ...formData, file: e.target.files[0] })
             }
             name="file"
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-primary-500"
-            required
           />
         </div>
         <button
