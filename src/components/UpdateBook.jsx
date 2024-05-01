@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function UpdateBook({ onShowUpdateBook, book }) {
   const location = useLocation();
@@ -173,6 +173,7 @@ function UpdateBook({ onShowUpdateBook, book }) {
               {loading ? "Updating..." : "Update"}
             </button>
           </div>
+          {message && <p>{message}</p>}
         </form>
       </div>
     </div>

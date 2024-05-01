@@ -6,6 +6,9 @@ import AppLayout from "./pages/AppLayout";
 import HomePage from "./pages/HomePage";
 import SingleBook from "./pages/SingleBook";
 import Books from "./pages/Books";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { initializeUserFromStorage } from "./redux/slices/userSlice";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +26,15 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    const user = localStorage.getItem("user");
+    if (user && token) {
+      dispatch(initializeUserFromStorage(user));
+    }
+  }, [dispatch]);
+
   return <RouterProvider router={router} />;
 }
 

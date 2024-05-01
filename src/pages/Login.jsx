@@ -25,8 +25,6 @@ const LoginPage = () => {
     dispatch(login(data._id));
 
     navigate("/");
-
-    console.log(data);
   };
   return (
     <div className="max-w-sm mx-auto mt-20">
