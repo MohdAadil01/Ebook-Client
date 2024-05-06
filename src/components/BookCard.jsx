@@ -5,8 +5,8 @@ const BookCard = ({ book }) => {
   return (
     <div className="flex gap-5 border p-5 shadow-md rounded flex-col">
       <img
-        src={book.coverImage}
-        alt={book.title}
+        src={book?.coverImage}
+        alt={book?.title}
         width={0}
         height={0}
         sizes="100vw"
@@ -15,10 +15,10 @@ const BookCard = ({ book }) => {
       />
       <div>
         <h2 className="line-clamp-2 text-[1.7rem] font-bold text-primary-600 text-balance capitalize">
-          {book.title}
+          {book?.title}
         </h2>
         <p className="font-bold text-primary-900 mt-1 capitalize text-lg">
-          by {book.author.name}
+          by {book?.author?.name}
         </p>
         <Link
           to={`/books/${book._id}`}

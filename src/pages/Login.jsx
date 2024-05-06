@@ -6,6 +6,7 @@ import { login } from "../redux/slices/userSlice";
 const LoginPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [message, setMessage] = useState(null);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -20,6 +21,10 @@ const LoginPage = () => {
       body: JSON.stringify(formData),
     });
     const data = await res.json();
+    if (!res.ok) {
+      setMessage(data.message);
+      return;
+    }
     localStorage.setItem("user", data._id);
     localStorage.setItem("accessToken", data.accessToken);
     dispatch(login(data._id));
@@ -72,6 +77,7 @@ const LoginPage = () => {
           Login
         </button>
       </form>
+      {message && <p>{message}</p>}
       <p className="mt-4 text-sm text-gray-600">
         Dont have an account?{" "}
         <Link to="/signup" className="text-primary-500 font-medium">
