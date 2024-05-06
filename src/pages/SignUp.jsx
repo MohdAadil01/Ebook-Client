@@ -6,6 +6,7 @@ import { signup } from "../redux/slices/userSlice";
 const SignupPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [message, setMessage] = useState(null);
 
   const [formData, setFromData] = useState({
     name: "",
@@ -27,6 +28,11 @@ const SignupPage = () => {
       }
     );
     const data = await res.json();
+    console.log(data);
+    if (!res.ok) {
+      setMessage(data.message);
+      return;
+    }
     localStorage.setItem("user", data._id);
     localStorage.setItem("accessToken", data.accessToken);
     dispatch(signup(data._id));
@@ -94,6 +100,7 @@ const SignupPage = () => {
           Sign Up
         </button>
       </form>
+      {message && <p>{message}</p>}
       <p className="mt-4 text-sm text-gray-600">
         Already have an account?{" "}
         <Link to="/login" className="text-primary-500 font-medium">
