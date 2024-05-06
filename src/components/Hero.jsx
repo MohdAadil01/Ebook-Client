@@ -1,6 +1,6 @@
 const Hero = () => {
   return (
-    <div className="mx-auto max-w-7xl py-10">
+    <div className="mx-auto max-w-7xl py-10  px-5">
       <div className="relative">
         <img
           src={
@@ -16,13 +16,13 @@ const Hero = () => {
         <img
           src={"../../public/assets/images/book.png"}
           alt="billboard"
-          className="absolute bottom-0 right-5"
+          className="absolute bottom-0 -right-10 lg:right-10"
           height={0}
           width={0}
           sizes="100vw"
           style={{ width: "auto", height: "18rem" }}
         />
-        <h3 className="absolute left-10 top-1/2 w-full max-w-3xl -translate-y-1/2 text-5xl font-semibold tracking-tight text-white">
+        <h3 className="absolute left-3 lg:left-20 w-auto top-1/2 max-w-3xl -translate-y-1/2 text-[2.5rem] leading-none font-semibold tracking-tight text-white">
           Connect, Share and Trade Your Favourite Reads...
         </h3>
       </div>

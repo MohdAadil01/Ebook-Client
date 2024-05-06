@@ -27,7 +27,7 @@ const LoginPage = () => {
     navigate("/");
   };
   return (
-    <div className="max-w-sm mx-auto mt-20">
+    <div className="max-w-sm mx-auto mt-20 px-5">
       <h2 className="text-2xl font-bold text-primary-700 mb-4">Login</h2>
       <form>
         <div className="mb-4">

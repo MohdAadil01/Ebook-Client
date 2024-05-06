@@ -48,13 +48,15 @@ function SingleBook() {
     setUpdateBook((prev) => !prev);
   };
   return (
-    <div className="mx-auto grid max-w-6xl grid-cols-3 gap-10 px-5 py-10">
+    <div className="flex flex-col lg:flex-row  lg:justify-between lg:px-[20rem]  grid-cols-3 gap-10 px-5 py-10">
       {showUpdateBook && (
         <UpdateBook onShowUpdateBook={handleShowUpdateBook} book={book} />
       )}
-      <div className="col-span-2 pr-16 text-primary-950">
-        <h2 className="mb-5 text-5xl font-bold leading-[1.1]">{book.title}</h2>
-        <span className="font-semibold">by {book.author.name}</span>
+      <div className="text-primary-950">
+        <h2 className="mb-5 text-5xl font-bold leading-[1.1] capitalize">
+          {book.title}
+        </h2>
+        <span className="font-semibold  capitalize">by {book.author.name}</span>
         <p className="mt-5 text-lg leading-8">{book.description}</p>
         <DownloadButton fileLink={book.file} />
         {currentUserAuthorSame && (
@@ -78,11 +80,11 @@ function SingleBook() {
         <img
           src={book.coverImage}
           alt={book.title}
-          className="rounded-md border"
+          className="rounded-md border w-auto h-auto lg:w-[20rem] lg:h-[15rem]"
           height={0}
           width={0}
           sizes="100vw"
-          style={{ width: "auto", height: "auto" }}
+          // style={{ width: "20rem", height: "15rem" }}
         />
       </div>
     </div>

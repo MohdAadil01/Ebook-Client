@@ -28,11 +28,10 @@ const SignupPage = () => {
     localStorage.setItem("accessToken", data.accessToken);
     dispatch(signup(data._id));
     navigate("/");
-    console.log(data);
   };
 
   return (
-    <div className="max-w-sm mx-auto mt-20">
+    <div className="max-w-sm mx-auto mt-20 p-5">
       <h2 className="text-2xl font-bold text-primary-700 mb-4">Sign Up</h2>
       <form>
         <div className="mb-4">
