@@ -1,6 +1,7 @@
-function DownloadButton() {
+// eslint-disable-next-line react/prop-types
+function DownloadButton({ fileLink }) {
   const handleDownload = () => {
-    console.log("downloading started");
+    window.open(fileLink, "_blank");
   };
   return (
     <button
