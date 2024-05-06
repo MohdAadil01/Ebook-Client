@@ -16,13 +16,16 @@ const SignupPage = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    const res = await fetch("http://localhost:4000/api/users/register", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
+    const res = await fetch(
+      "https://ebook-jvez.onrender.com/api/users/register",
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
     const data = await res.json();
     localStorage.setItem("user", data._id);
     localStorage.setItem("accessToken", data.accessToken);

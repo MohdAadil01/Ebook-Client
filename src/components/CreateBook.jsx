@@ -24,7 +24,7 @@ function CreateBook() {
 
     const token = localStorage.getItem("accessToken");
 
-    const res = await fetch("http://localhost:4000/api/books", {
+    const res = await fetch("https://ebook-jvez.onrender.com/api/books", {
       method: "POST",
       body: bookData,
       headers: {

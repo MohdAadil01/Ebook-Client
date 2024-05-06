@@ -4,7 +4,7 @@ const BookList = () => {
   const [books, setBooks] = useState(null);
 
   const fetchBooks = async () => {
-    const response = await fetch("http://localhost:4000/api/books");
+    const response = await fetch("https://ebook-jvez.onrender.com/api/books");
     const data = await response.json();
     setBooks(data.allBooks);
   };

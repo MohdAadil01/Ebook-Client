@@ -12,7 +12,7 @@ const LoginPage = () => {
   });
   const handleLogin = async (e) => {
     e.preventDefault();
-    const res = await fetch("http://localhost:4000/api/users/login", {
+    const res = await fetch("https://ebook-jvez.onrender.com/api/users/login", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

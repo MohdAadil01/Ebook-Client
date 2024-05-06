@@ -31,13 +31,16 @@ function UpdateBook({ onShowUpdateBook, book }) {
     bookData.append("file", formData.file);
 
     try {
-      const res = await fetch(`http://localhost:4000/api/books/${book._id}`, {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: bookData,
-      });
+      const res = await fetch(
+        `https://ebook-jvez.onrender.com/api/books/${book._id}`,
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: bookData,
+        }
+      );
       const data = await res.json();
       if (!res.ok) {
         setMessage(data.message);

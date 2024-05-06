@@ -13,7 +13,9 @@ function SingleBook() {
   const navigate = useNavigate();
 
   const fetchBook = async () => {
-    const res = await fetch(`http://localhost:4000/api/books/${bookId}`);
+    const res = await fetch(
+      `https://ebook-jvez.onrender.com/api/books/${bookId}`
+    );
     const data = await res.json();
     setBook(data?.foundBook);
     setAuthor(data?.author?._id);
@@ -32,13 +34,16 @@ function SingleBook() {
   const token = localStorage.getItem("accessToken");
 
   const handleDeleteBook = async () => {
-    const res = await fetch(`http://localhost:4000/api/books/${book?._id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = await fetch(
+      `https://ebook-jvez.onrender.com/api/books/${book?._id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     const data = await res.json();
     console.log(data);
     navigate("/");
