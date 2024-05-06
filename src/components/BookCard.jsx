@@ -21,7 +21,7 @@ const BookCard = ({ book }) => {
           by {book?.author?.name}
         </p>
         <Link
-          to={`/books/${book._id}`}
+          to={`/books/${book?._id}`}
           className="py-1 px-2 rounded border border-primary-500 mt-4 inline-block text-primary-500 font-medium text-lg
                     hover:border-primary-100 hover:bg-primary-100 transition"
         >
