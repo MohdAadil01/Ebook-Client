@@ -14,7 +14,7 @@ const Hero = () => {
         />
         <div className="absolute inset-0 h-full w-full rounded-lg bg-gray-950 opacity-30" />
         <img
-          src={"../../public/assets/images/book.png"}
+          src={"assets/images/book.png"}
           alt="billboard"
           className="absolute bottom-0 -right-10 lg:right-10"
           height={0}
