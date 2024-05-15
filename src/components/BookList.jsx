@@ -11,9 +11,9 @@ const BookList = () => {
   useEffect(() => {
     fetchBooks();
   }, []);
-  if (books === null) {
-    return <>Loading...</>;
-  }
+  // if (books === null) {
+  //   return <>Loading...</>;
+  // }
   return (
     <div className="grid grid-cols-1 gap-8 md:grid-cols-3 max-w-7xl mx-auto mb-10">
       {books.map((book) => (
